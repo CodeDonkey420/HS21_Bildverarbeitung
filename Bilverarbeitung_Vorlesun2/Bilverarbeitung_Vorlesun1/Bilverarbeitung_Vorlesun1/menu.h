@@ -7,6 +7,10 @@ enum MenuOpts {
 	viewImage,
 	dilateImage,
 	erodeImage,
+	countPixels,
+	openOp,
+	closeOp,
+	grassFire,
 	
 } menuOpts;
 

@@ -8,6 +8,10 @@ int menu() {
 	printf("3. Orginalbild anzeigen lassen\n");
 	printf("4. Dilate\n");
 	printf("5. Erosion\n");
+	printf("6. Pixel zaehlen\n");
+	printf("7. Oeffnen\n");
+	printf("8. Schliessen\n");
+	printf("9. Grassfire\n");
 	printf("0. Ende\n");
 	printf("Wahl : ");
 	scanf("%i", &i);

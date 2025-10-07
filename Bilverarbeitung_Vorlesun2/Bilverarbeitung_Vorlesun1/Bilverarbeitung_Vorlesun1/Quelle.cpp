@@ -8,8 +8,10 @@ void main() {
 	int chosen_option;
 	unsigned char image[MAXXDIM][MAXYDIM]; //Speicherplatz für das Bild erzeugen
 	unsigned char out[MAXXDIM][MAXYDIM]; //Speicherplatz für das Bild erzeugen
+	unsigned char mask[MAXXDIM][MAXYDIM]; //Speicherplatz für das Bild erzeugen
 	unsigned char temp[MAXXDIM][MAXYDIM];
 	int _result;
+	int count;
 	int eingelesen = 0;
 
 	reset_matrix(out);
@@ -23,6 +25,7 @@ void main() {
 
 				if (_result == 0) {
 					printf("Bild erfolgreich eingelesen.\n");
+					eingelesen = 1;
 				}
 
 				else {
@@ -47,7 +50,6 @@ void main() {
 					printf("Kein Bild geladen! Bitte zuerst ein Bild einlesen.\n");
 				}
 				else {
-					out[MAXXDIM][MAXYDIM]; //Speicherplatz für das Bild erzeugen
 					dilate(image, out);
 					_result = writeImage_ppm(out, MAXXDIM, MAXYDIM);
 				}
@@ -58,32 +60,38 @@ void main() {
 					printf("Kein Bild geladen! Bitte zuerst ein Bild einlesen.\n");
 				}
 				else{
-					out[MAXXDIM][MAXYDIM]; //Speicherplatz für das Bild erzeugen
-
 					erode(image, out);
 					_result = writeImage_ppm(out, MAXXDIM, MAXYDIM);
 				}				
 				break;
-			case 6: //Pixel zählen
+
+			case countPixels: //Pixel zählen
 				readImage_ppm(image);
-				int Zähler = anzahl(image);
-				printf("Anzahl der Pixel: %d\n", Zähler);
+				count = anzahl(image);
+				printf("Anzahl der Pixel: %d\n", count);
 				break;
-			case 7: //Open Function
+
+			case openOp: //Open Function
 				if (!eingelesen) {
 					printf("Kein Bild geladen! Bitte zuerst ein Bild einlesen.\n");
 				}
 				else{
-					öffnen(image, temp);
+					öffnen(image);
 				}
 				break;
-			case 8:
+
+			case closeOp:
 				if (!eingelesen) {
 					printf("Kein Bild geladen! Bitte zuerst ein Bild einlesen.\n");
 				}
 				else{
-					Schließen(image, temp);
+					Schließen(image);
 				}
+				break;
+
+			case grassFire:
+        count = grassfire(image, mask);
+        printf("Es gibt %d objekte", count);
 				break;
 
 			default:
