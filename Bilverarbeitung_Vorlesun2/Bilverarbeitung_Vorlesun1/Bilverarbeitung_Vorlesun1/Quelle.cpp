@@ -91,7 +91,7 @@ void main() {
 
 			case grassFire:
         count = grassfire(image, mask);
-        printf("Es gibt %d objekte", count);
+        printf("Es gibt %d Objekte\n", count);
 				break;
 
 			default:

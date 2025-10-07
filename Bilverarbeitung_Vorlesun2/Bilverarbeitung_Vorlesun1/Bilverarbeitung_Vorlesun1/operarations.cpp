@@ -121,8 +121,6 @@ int grassfire(unsigned char in[MAXXDIM][MAXYDIM], unsigned char mask[MAXXDIM][MA
 
         char	dirbvdir[256]="dir C:\\bv\\*.ppm /B";
 
-        system(dirbvdir);
-
         sprintf(index, "%d", mask_counter);
         strcat(fname, index);
         strcat(fname,".ppm");
